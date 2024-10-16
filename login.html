@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+   <style>
+    body{
+       background-color: #162335;
+    }
+    h1{
+        text-align: center;
+        margin-bottom: 80px;
+        color: white;
+    }
+    .main-container{
+        width: 100vw;
+        height: 100vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        height: 500px;
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 17px #0d1b29;
+        background-color:#1d2125;
+        color: rgb(161, 153, 153);
+        padding: 20px;
+    }
+    .formItem{
+         width: 100%;
+    }
+    label, input {
+        display: block;
+        width: 95%;
+        margin: 10px 0;
+    }
+    .input{
+        outline: none;
+        border: none;
+        background-color: #0d1b29;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        background-color: aqua;
+        color: #162335;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 50px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0d1b29;
+        color: aqua;
+    }
+    .error {
+        color: red;
+        padding-left: 5%;
+    }
+   </style>
+</head>
+<body>
+    
+  <div class="main-container">
+    <div class="container">
+        <h1>Login</h1>
+        <div class="formItem">
+            <form action="/login" method="POST">
+                <label for="name">Enter Username:</label>
+                <input class="input" type="text" placeholder="User Name" name="Username" value="{{.Username}}" required>
+                <br>
+                {{if .UsernameErr}}
+                    <span class="error">{{.UsernameErr}}</span>
+                {{end}}
+
+                <label for="password">Password:</label>
+                <input class="input" type="password" placeholder="Password" name="Password" required>
+                <br>
+                {{if .PasswordErr}}<span style="color: red;">{{.PasswordErr}}</span>{{end}}
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>  
+  </div>
+         
+</body>
+</html>
